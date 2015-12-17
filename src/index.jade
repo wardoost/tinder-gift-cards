@@ -1,0 +1,20 @@
+extends layouts/base
+
+block vars
+  -pageTitle = null; //- Custom page title
+  -metaKeywordsPage = ""; //- Extra keywords for this page
+
+block content
+  header#item1
+    .header-content: .header-content-inner.text-center
+      h1 Lorem Ipsum
+      hr
+      p Lorem ipsum dolor sit amet
+
+  section#item2
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Generate your Tinder Gift Card
+          hr.primary
+          a#generate.btn.btn-primary.btn-xl.page-scroll Submit
