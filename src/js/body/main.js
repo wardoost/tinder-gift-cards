@@ -26,19 +26,38 @@ var init = function(){
 
   $("#generate").on('click', function(e) {
     console.log(getBase64Image("../img/header.jpg"));
-    //generatePDF();
+    generatePDF();
   });
 }
 
+
+
 var generatePDF = function(){
+
+ 
+
   // You'll need to make your image into a Data URL
   // Use http://dataurl.net/#dataurlmaker
-  var imgData = getBase64Image("http://images.gotinder.com/52e418a804580e204b00033c/640x640_e73edb75-10a3-4112-8ca5-fee6d332a722.jpg");
+  console.log("-- PDF -- ");
+  //var imgData = getBase64Image("http://images.gotinder.com/52e418a804580e204b00033c/640x640_e73edb75-10a3-4112-8ca5-fee6d332a722.jpg")
   var doc = new jsPDF();
-
   doc.setFontSize(40);
   doc.text(35, 25, "Paranyan loves jsPDF");
-  doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+  //doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+
+  console.log("-- QR -- ");
+  var qr = new QRCode("test", {
+    text: "http://www.driesdepoorter.be",
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+  var dataUrl = qr.toDataURL();
+
+  doc.addImage(dataUrl);
   doc.save('test.pdf');
 }
 
