@@ -23,8 +23,8 @@ var init = function(){
 
   });
 
-  $("#generate").on('click', function(e) {
-    console.log(getBase64Image("../img/header.jpg"));
+  $("#generateBtn").on('click', function(e) {
+    console.log("Base64test: " + getBase64("../img/header.jpg"));
     generatePDF();
   });
 }
@@ -59,7 +59,7 @@ var generatePDF = function(){
 }
 
 var getBase64 = function (url) {
-  var img = document.getElementById("profilepic");
+  var img = document.getElementById("profilePic");
   //img.setAttribute('crossOrigin', 'anonymous');
   var canvas = document.createElement("canvas");
   canvas.width = img.width;

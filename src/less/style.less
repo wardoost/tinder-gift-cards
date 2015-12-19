@@ -65,18 +65,27 @@ html {
     //  MAIN SECTION
     // ---------------------------------------------
     section#main {
-      // Example of the animation defined in animation.less
+      // Fade in main content
       .animation-name(fadeIn);
       .animation-duration(1s);
       .animation-fill-mode(both);
+
       section {
           padding: 20px 0;
-      }
 
-      .no-padding {
-          padding: 0;
+          &#generate{
+            .background-size(cover);
+            background-position: center;
+            background-image: url('../img/header.jpg');
+            color: @body-bg;
+          }
+          &#profile{
+            // display: none;
+            #profilePic{
+              max-width: 300px;
+            }
+          }
       }
-
     }
 
 

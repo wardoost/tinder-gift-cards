@@ -7,14 +7,16 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:              #000;
+@black:                  #000;
+@gray-base:              @black;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              lighten(@gray-base, 20%);   // #333
 @gray:                   lighten(@gray-base, 33.5%); // #555
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+@white:                  #fff;
 
-@brand-primary:         #00ea95;
+@brand-primary:         #ff6b6b;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -26,9 +28,9 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @gray-darker;
+@body-bg:               @white;
 //** Global text color on `<body>`.
-@text-color:            @gray-lighter;
+@text-color:            @gray-darker;
 
 //** Global textual link color.
 @link-color:            @brand-primary;
@@ -42,7 +44,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Source Code Pro", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "chaletmedium", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
