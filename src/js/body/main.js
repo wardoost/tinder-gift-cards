@@ -4,24 +4,21 @@
 var init = function(){
 
   // Anchor links animate scroll
-  $("a[href^='#']").on('click', function(e) {
-
-     // prevent default anchor click behavior
-     e.preventDefault();
-
-     // store hash
-     var hash = this.hash;
-
-     // animate
+  $("a[href^='#']").click(function(evt) {
+     evt.preventDefault(); // prevent default anchor click behavior
+     var hash = this.hash; // store hash
+     // animate scroll
      $('html, body').animate({
          scrollTop: $(hash).offset().top
        }, 300, function(){
-
          // when done, add hash to url (default click behaviour)
          window.location.hash = hash;
        });
-
   });
+  // Collapse menu on anchor links in navbar
+  $(".navbar-nav li a[href^='#']").click(function(event) {
+      $(".navbar-collapse").collapse('hide');
+    });
 
   $("#generateBtn").on('click', function(e) {
     console.log("Base64test: " + getBase64("../img/header.jpg"));
