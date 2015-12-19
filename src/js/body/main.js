@@ -5,7 +5,6 @@ var init = function(){
 
   // Anchor links animate scroll
   $("a[href^='#']").on('click', function(e) {
-    console.log("anchor link")
 
      // prevent default anchor click behavior
      e.preventDefault();
@@ -34,11 +33,9 @@ var init = function(){
 
 var generatePDF = function(){
 
- 
-
+  console.log("-- PDF --");
   // You'll need to make your image into a Data URL
   // Use http://dataurl.net/#dataurlmaker
-  console.log("-- PDF -- ");
   //var imgData = getBase64Image("http://images.gotinder.com/52e418a804580e204b00033c/640x640_e73edb75-10a3-4112-8ca5-fee6d332a722.jpg")
   var doc = new jsPDF();
   doc.setFontSize(40);
@@ -61,25 +58,16 @@ var generatePDF = function(){
   doc.save('test.pdf');
 }
 
-var getBase64Image = function (url) {
-    var img = new Image();
-
-    img.setAttribute('crossOrigin', 'anonymous');
-
-    img.onload = function () {
-        var canvas = document.createElement("canvas");
-        canvas.width =this.width;
-        canvas.height =this.height;
-
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(this, 0, 0);
-
-        var dataURL = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
-
-        return dataURL;
-    };
-
-    img.src = url;
+var getBase64 = function (url) {
+  var img = document.getElementById("profilepic");
+  //img.setAttribute('crossOrigin', 'anonymous');
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.width;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  var dataURL = canvas.toDataURL("image/png"); //This line of code will throw exception
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
 

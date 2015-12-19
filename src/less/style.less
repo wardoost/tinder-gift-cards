@@ -11,6 +11,7 @@ html {
   // ---------------------------------------------
   body {
 
+    padding-top: @navbar-height;
     
     // ---------------------------------------------
     //  NAVIGATION
@@ -24,13 +25,7 @@ html {
     //  NAVIGATION
     // ---------------------------------------------
     header{
-      .background-size(cover);
-      background-position: center;
-      background-image: url('../img/header.jpg');
-      color: @body-bg;
-      .header-content {
-        padding: 100px 15px 100px;
-      }
+
     }
 
 
@@ -74,16 +69,8 @@ html {
       .animation-name(fadeIn);
       .animation-duration(1s);
       .animation-fill-mode(both);
-      .bg-dark{
-        background-color: @brand-primary;
-        color: @body-bg;
-      }
       section {
-          padding: 100px 0;
-      }
-
-      aside {
-          padding: 50px 0;
+          padding: 20px 0;
       }
 
       .no-padding {

@@ -2,7 +2,7 @@ module.exports = function (grunt) {
   //----------------------------------------------
   //- Global variables
   //----------------------------------------------
-  var deployDomain = 'tindergift.cards'; // No trailing slash, no subdomain
+  var deployDomain = 'tinderme.cards'; // No trailing slash, no subdomain
    var deploySubDir = ''; // Trailing slash
    var deployURL = deployDomain + '/' + deploySubDir;
 
@@ -27,11 +27,13 @@ module.exports = function (grunt) {
     });
   });
 
-  // Display project name, local ip address, deploy address and optional paths flag
+  // Display project settings
   grunt.log.subhead((' ' + grunt.option('projectDir') + ' ').green.inverse);
-  grunt.log.writeln('Local IP'.bold + ': ' + grunt.option('ipAddress'));
-  grunt.log.writeln('Deploy URL'.bold + ': ' + grunt.option('deployURL'));
-  grunt.log.writeln('Absolute paths'.bold + ': ' + grunt.option('absolute'));
+  grunt.log.writeln(
+      'Local IP'.bold + ': ' + grunt.option('ipAddress') + '\n' +
+      'Deploy URL'.bold + ': ' + grunt.option('deployURL') + '\n' +
+      'Absolute paths'.bold + ': ' + grunt.option('absolute')
+    );
 
   // Load grunt configurations automatically and define the configuration for all the tasks
   grunt.initConfig(require('load-grunt-configs')(grunt));
