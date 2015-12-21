@@ -21,8 +21,9 @@ var init = function(){
     });
 
   $("#generateBtn").on('click', function(e) {
-    console.log("Base64test: " + getBase64("../img/header.jpg"));
     generatePDF();
+    console.log("Base64test: " + getBase64("../img/header.jpg"));
+   
   });
 }
 
@@ -30,7 +31,7 @@ var init = function(){
 
 var generatePDF = function(){
 
-  console.log("-- PDF --");
+  console.log("-- STARTER GENERATING PDF --");
   // You'll need to make your image into a Data URL
   // Use http://dataurl.net/#dataurlmaker
   //var imgData = getBase64Image("http://images.gotinder.com/52e418a804580e204b00033c/640x640_e73edb75-10a3-4112-8ca5-fee6d332a722.jpg")
@@ -39,19 +40,11 @@ var generatePDF = function(){
   doc.text(35, 25, "Paranyan loves jsPDF");
   //doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
 
-  console.log("-- QR -- ");
-  var qr = new QRCode("test", {
-    text: "http://www.driesdepoorter.be",
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-});
+  console.log("-- START GENERATING QR -- ");
+  var dataUrl = qr.toDataURL({ mime: 'image/jpeg', value: 'driesdepoorter' }); 
+  console.log(dataUrl);
+  doc.addImage(dataUrl,'JPEG',15,40,180,160);
 
-  var dataUrl = qr.toDataURL();
-
-  doc.addImage(dataUrl);
   doc.save('test.pdf');
 }
 
@@ -63,7 +56,7 @@ var getBase64 = function (url) {
   canvas.height = img.width;
   var ctx = canvas.getContext("2d");
   ctx.drawImage(img, 0, 0);
-  var dataURL = canvas.toDataURL("image/png"); //This line of code will throw exception
+  var dataURL = canvas.toDataURL("image/png");  //This line of code will throw exception
   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
