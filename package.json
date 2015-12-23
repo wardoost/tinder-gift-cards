@@ -1,9 +1,9 @@
 {
-  "name": "personal-site",
+  "name": "tinder-me-cards",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://bitbucket.org/wardoost/personal-site.git"
+    "url": "git://github.com/wardoost/tinder-me-cards.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

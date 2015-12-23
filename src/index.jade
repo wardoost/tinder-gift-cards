@@ -8,10 +8,16 @@ block content
   section#generate
     .container
       .row
-        .col-lg-12.text-center
+        .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.text-center
           h2.section-heading Generate your TinderMe Card
           hr.primary
-          a#generateBtn.btn.btn-primary.btn-xl.page-scroll Generate
+          form(role="form" data-toggle="validator")
+            .form-group
+              //-label.control-label(for='inputTinderUsername') Tinder username
+              .input-group
+                span.input-group-addon @
+                input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
+            button#generateBtn.btn.btn-primary(type='submit') Generate PDF
 
   section#profile
     .container
