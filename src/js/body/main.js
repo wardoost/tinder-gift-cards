@@ -23,9 +23,8 @@ var init = function(){
   $("#generateBtn").on("click", function(e) {
 
     var tinderUsername = $("#inputTinderUsername").val();
+
     generatePDF(tinderUsername);
-    //console.log("Base64test: " + getBase64("../img/header.jpg"));
-   
   });
 }
 
@@ -33,16 +32,26 @@ var init = function(){
 
 var generatePDF = function(tinderUsername){
 
-  // You'll need to make your image into a Data URL
-  // Use http://dataurl.net/#dataurlmaker
+  var webProfileURL = "www.tinder.com/@" + tinderUsername;
+
+  // Get info from tinder web profile page
+  $("#loadData").load(webProfileURL + " #card-container");
+
+  var age = 20;
+  var name = "Name";
+
+  // Create PDF
   var doc = new jsPDF();
   
+  // Add web profile URL  
   doc.setFontSize(40);
-  doc.text(35, 25, "www.tinder.com/@" + tinderUsername);
+  doc.text(35, 25, webProfileURL);
 
-  var dataUrl = qr.toDataURL({ mime: "image/jpeg", value: tinderUsername }); 
+  // Add QR from web profile URL
+  var dataUrl = qr.toDataURL({ mime: "image/jpeg", value: webProfileURL }); 
   doc.addImage(dataUrl,"JPEG",15,40,40,40);
 
+  // Download/open PDF depending on browser settings
   doc.save("TinderMe-Card-" + tinderUsername + ".pdf");
 }
 
