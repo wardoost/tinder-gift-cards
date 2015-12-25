@@ -4,8 +4,8 @@
 var init = function(){
 
   // Anchor links animate scroll
-  $("a[href^='#']").click(function(evt) {
-     evt.preventDefault(); // prevent default anchor click behavior
+  $("a[href^='#']").click(function(e) {
+     e.preventDefault(); // prevent default anchor click behavior
      var hash = this.hash; // store hash
      // animate scroll
      $("html, body").animate({
@@ -16,7 +16,7 @@ var init = function(){
        });
   });
   // Collapse menu on anchor links in navbar
-  $(".navbar-nav li a[href^='#']").click(function(event) {
+  $(".navbar-nav li a[href^='#']").click(function(e) {
       $(".navbar-collapse").collapse("hide");
     });
 
@@ -32,9 +32,7 @@ var init = function(){
 
 var generatePDF = function(tinderUsername){
 
-
   var webProfileURL = "www.tinder.com/@" + tinderUsername;
-
 
   // Get info from tinder web profile page
   $("#loadData").load(webProfileURL + " #card-container");
@@ -52,8 +50,8 @@ var generatePDF = function(tinderUsername){
   doc.setFontSize(40);
   doc.text(35, 25, webProfileURL);
 
-// Add QR from web profile URL
-  var qrcode = qr.toDataURL({ mime: "image/jpeg", value: tinderUsername, background: '#DC6639', fill: '#DC6639', foreground: '#FFFFFF' }); 
+  // Add QR from web profile URL
+  var qrcode = qr.toDataURL({ mime: "image/jpeg", value: webProfileURL, background: '#FFFFFF', foreground: '#DC6639' }); 
   doc.addImage(qrcode,"JPEG",15,40,40,40);
 
   // Download/open PDF depending on browser settings
