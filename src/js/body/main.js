@@ -32,30 +32,37 @@ var init = function(){
 
 var generatePDF = function(tinderUsername){
 
-  var webProfileURL = "www.tinder.com/@" + tinderUsername;
+  var webProfileURL = "http://www.gotinder.com/@" + tinderUsername;
 
   // Get info from tinder web profile page
-  $("#loadData").load(webProfileURL + " #card-container");
+  $.ajax({
+    url: "php/scraping_tinder.php?url=" + webProfileURL,
+    type: 'get',
+    dataType: 'html',
+    async: false,
+    success: function(data) {
+      var result = jQuery.parseJSON(data)
 
-  var age = 20;
-  var name = "Name";
+      // Create PDF
+      var doc = new jsPDF();
 
-  // Create PDF
-  var doc = new jsPDF();
+      var name = result.name;
+      var age = result.age.replace(/&nbsp;/g, "");
+      
+      // Add web profile URL  
+      doc.setFontSize(20);
+      doc.text(20, 20, webProfileURL.replace("http://", ""));
+      doc.text(20, 30, name);
+      doc.text(20, 40, age);
 
-  // Set template. 
-  
-  
-  // Add web profile URL  
-  doc.setFontSize(40);
-  doc.text(35, 25, webProfileURL);
+      // Add QR from web profile URL
+      var qrcode = qr.toDataURL({ mime: "image/jpeg", value: webProfileURL, background: '#FFFFFF', foreground: '#DC6639' }); 
+      doc.addImage(qrcode,"JPEG",20,50,40,40);
 
-  // Add QR from web profile URL
-  var qrcode = qr.toDataURL({ mime: "image/jpeg", value: webProfileURL, background: '#FFFFFF', foreground: '#DC6639' }); 
-  doc.addImage(qrcode,"JPEG",15,40,40,40);
-
-  // Download/open PDF depending on browser settings
-  doc.save("TinderMe-Card-" + tinderUsername + ".pdf");
+      // Download/open PDF depending on browser settings
+      doc.save("TinderMe-Card-" + tinderUsername + ".pdf");
+    } 
+  });
 }
 
 var getBase64 = function (url) {
