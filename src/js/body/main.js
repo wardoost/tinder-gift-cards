@@ -41,14 +41,16 @@ var generatePDF = function(tinderUsername){
     dataType: 'html',
     async: false,
     success: function(data) {
-      var result = jQuery.parseJSON(data)
+      var result = jQuery.parseJSON(data);
 
       // Create PDF
       var doc = new jsPDF();
 
       var name = result.name;
       var age = result.age.replace(/&nbsp;/g, "");
-      
+      var profileurl = result.profileurl;
+
+
       // Add web profile URL  
       doc.setFontSize(20);
       doc.text(20, 20, webProfileURL.replace("http://", ""));
