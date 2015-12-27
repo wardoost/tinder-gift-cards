@@ -3,8 +3,8 @@ module.exports = function (grunt) {
   //- Global variables
   //----------------------------------------------
   var deployDomain = 'tinderme.cards'; // No trailing slash, no subdomain
-   var deploySubDir = ''; // Trailing slash
-   var deployURL = deployDomain + '/' + deploySubDir;
+  var deploySubDir = ''; // Trailing slash
+  var deployURL = deployDomain + '/' + deploySubDir;
 
   // Read package.json
   grunt.initConfig({
@@ -62,9 +62,8 @@ module.exports = function (grunt) {
 
   // Create server task
   grunt.registerTask('server', [
-    'configureRewriteRules',
-    'connect:build',
-    'open:build',
+    'exec:mamp',
+    'browserSync',
     'notify:server',
     'watch'
   ]);
@@ -101,3 +100,10 @@ module.exports = function (grunt) {
     'server'
   ]);
 };
+
+var exec = require('child_process').exec;
+process.on('SIGINT', function () {
+  exec('/Applications/MAMP/bin/stop.sh', function () {
+    process.exit();
+  });
+});

@@ -26,8 +26,6 @@ var init = function(){
   });
 }
 
-
-
 var getUserData = function(tinderUsername){
 
   var webProfileURL = "http://www.gotinder.com/@" + tinderUsername;
