@@ -52,14 +52,20 @@ html(lang="en")
     //- Open Graph (facebook)
     meta(property="og:type", content="website")
     meta(property="og:url", content=absoluteUrl)
-    meta(property="og:title", content=pageTitle + " - " + websiteTitle)
+    if pageTitle
+      meta(property="og:title", content=pageTitle + " - " + websiteTitle)
+    else
+      meta(property="og:title", content=websiteTitle)
     meta(property="og:description", content=metaDescription)
     meta(property="og:image", content=deployUrl + "img/social-share.png")
 
     //- Twitter
     meta(name="twitter:card" content="photo")
     meta(name="twitter:url" content=absoluteUrl)
-    meta(name="twitter:title" content=pageTitle + " - " + websiteTitle)
+    if pageTitle
+      meta(name="twitter:title" content=pageTitle + " - " + websiteTitle)
+    else
+      meta(name="twitter:title" content=websiteTitle)
     meta(name="twitter:description" content=metaDescription)
     meta(name="twitter:image" content=deployUrl + "img/social-share.png")
 

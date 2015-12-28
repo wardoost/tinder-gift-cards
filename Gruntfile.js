@@ -101,6 +101,7 @@ module.exports = function (grunt) {
   ]);
 };
 
+// Close MAMP server after processes stop
 var exec = require('child_process').exec;
 process.on('SIGINT', function () {
   exec('/Applications/MAMP/bin/stop.sh', function () {

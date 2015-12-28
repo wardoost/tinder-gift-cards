@@ -37,7 +37,9 @@ module.exports = function(grunt, options){
     },
     configFiles: {
       files: ['Gruntfile.js', 'config/*.js'],
-      options: { reload: true }
+      options: {
+        reload: true
+      }
     }
   }
 };

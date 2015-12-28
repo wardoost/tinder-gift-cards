@@ -3,100 +3,101 @@
 @import "animation.less";
 @import "fonts.less";
 
+
+// ---------------------------------------------
+//  GENERAL
+// ---------------------------------------------
 html {
+}
+body {
+  padding-top: @navbar-height;
+  &.index{
+    padding-top: 0;
+  }
+}
+
+// ---------------------------------------------
+//  NAVIGATION
+// ---------------------------------------------
+nav {
+  color: @body-bg;
+}
 
 
-  // ---------------------------------------------
-  //  GENERAL
-  // ---------------------------------------------
-  body {
+// ---------------------------------------------
+//  NAVIGATION
+// ---------------------------------------------
+header{
 
-    padding-top: @navbar-height;
-    
-    // ---------------------------------------------
-    //  NAVIGATION
-    // ---------------------------------------------
-    nav {
+}
+
+
+// ---------------------------------------------
+//  NOTIFICATION SECTION
+// ---------------------------------------------
+section#notifications{
+  .notification{
+    color: @body-bg;
+    &.warning{
+      background-color: @brand-warning;
+    }
+    &.danger{
+      background-color: @brand-danger;
+    }
+    a{
       color: @body-bg;
+      font-weight: bold;
     }
+  }
+}
 
 
-    // ---------------------------------------------
-    //  NAVIGATION
-    // ---------------------------------------------
-    header{
 
-    }
+// ---------------------------------------------
+//  TITLE SECTION
+// ---------------------------------------------
+section#title{
+  // Example of the animation defined in animation.less
+  .animation-name(fadeIn);
+  .animation-duration(1s);
+  .animation-fill-mode(both);
+}
 
 
-    // ---------------------------------------------
-    //  NOTIFICATION SECTION
-    // ---------------------------------------------
-    section#notifications{
-      .notification{
+// ---------------------------------------------
+//  MAIN SECTION
+// ---------------------------------------------
+section#main {
+  // Fade in main content
+  .animation-name(fadeIn);
+  .animation-duration(1s);
+  .animation-fill-mode(both);
+
+  section {
+      padding: 20px 0;
+
+      &#generate{
+        .background-size(cover);
+        background-position: center;
+        background-image: url('../img/header.jpg');
         color: @body-bg;
-        &.warning{
-          background-color: @brand-warning;
-        }
-        &.danger{
-          background-color: @brand-danger;
-        }
-        a{
-          color: @body-bg;
-          font-weight: bold;
+      }
+      &#profile{
+        opacity: 0;
+        #profilePic{
+          max-width: 300px;
         }
       }
-    }
-    
+  }
+}
 
 
-    // ---------------------------------------------
-    //  TITLE SECTION
-    // ---------------------------------------------
-    section#title{
-      // Example of the animation defined in animation.less
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-fill-mode(both);
-    }
-
-
-    // ---------------------------------------------
-    //  MAIN SECTION
-    // ---------------------------------------------
-    section#main {
-      // Fade in main content
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-fill-mode(both);
-
-      section {
-          padding: 20px 0;
-
-          &#generate{
-            .background-size(cover);
-            background-position: center;
-            background-image: url('../img/header.jpg');
-            color: @body-bg;
-          }
-          &#profile{
-            opacity: 0;
-            #profilePic{
-              max-width: 300px;
-            }
-          }
-      }
-    }
-
-
-    // ---------------------------------------------
-    //  FOOTER
-    // ---------------------------------------------
-    footer {
-      .text-footer{
-        .text-center();
-        font-size: @font-size-small;
-      }
-    }
+// ---------------------------------------------
+//  FOOTER
+// ---------------------------------------------
+footer {
+  .text-footer{
+    .text-center();
+    font-size: @font-size-small;
   }
 }
