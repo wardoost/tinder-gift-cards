@@ -60,7 +60,9 @@ var generatePDF = function(url, username, name, age, imgData){
 
 
   // Add user data 
-  doc.setFontSize(20);
+  doc.addFont('GothamRoundedMedium', 'Gotham Rounded', 'medium');
+  doc.setFont('Gotham Rounded');
+  doc.setFontSize(10);
   doc.text(20, 20, url.replace('http://', ''));
   doc.text(20, 30, name);
   doc.text(20, 40, age);
