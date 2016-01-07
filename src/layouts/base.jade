@@ -91,39 +91,7 @@ html(lang="en")
   //- Body (ontouchstart fix to enable hover state for tapping on links)
   //----------------------------------------------
   body(ontouchstart="")#page-top
-    nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
-      .container-fluid
-        .navbar-header
-          button(type="button" data-toggle="collapse" data-target="#navbar-collapse-1").navbar-toggle.collapsed
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          //- Website name or image comes here
-          a(href="#page-top").navbar-brand.page-scroll #{websiteTitle}
-
-        .collapse.navbar-collapse#navbar-collapse-1
-          include ../includes/menu
-
-    section#notifications
-      <!--[if lt IE 8]>
-      <div class="notification danger">
-      <div class="container">
-      <h5>You are using a dangerously old browser which may cause this site to not work properly. <a href="http://windows.microsoft.com/nl-BE/internet-explorer/download-ie">Please update</a> your browser to have a richer and safer browsing experience.</h5>
-      </div>
-      </div>
-      <![endif]-->
-      noscript: .notification.warning
-        .container: h5 JavaScript is disabled which may cause this site to not work properly. Please enable JavaScript in your web browser.
-      block notifications
-
-    section#main(class=fileName)
-       block content
-
-    footer
-      .container
-          p.text-footer #{websiteTitle} | Last update on #{timeStamp}
-
+    block content
 
     //----------------------------------------------
     //- JS body links

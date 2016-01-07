@@ -15,10 +15,6 @@ var init = function(){
          window.location.hash = hash;
        });
   });
-  // Collapse menu on anchor links in navbar
-  $('.navbar-nav li a[href^="#"]').click(function(e) {
-      $('.navbar-collapse').collapse('hide');
-    });
 
   // Generate PDF button
   $('#generateBtn').on('click', function(e) {

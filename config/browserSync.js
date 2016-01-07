@@ -8,7 +8,6 @@ module.exports = function(grunt, options){
         logLevel: 'info',
         logConnections: true,
         open: "ui-external",
-        browser: "google chrome",
         notify: false
       }
     }

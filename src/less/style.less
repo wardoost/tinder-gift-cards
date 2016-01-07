@@ -5,89 +5,69 @@
 
 
 // ---------------------------------------------
-//  GENERAL
+//  HEADER
 // ---------------------------------------------
-html {
-}
-body {
-  padding-top: @navbar-height;
-  &.index{
-    padding-top: 0;
+#header-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar;
+  background-color: fade(@body-bg, 80%);
+  min-height: @navbar-height;
+  #logo{
+    position: relative;
+    top: 11px;
   }
 }
-
-// ---------------------------------------------
-//  NAVIGATION
-// ---------------------------------------------
-nav {
-  color: @body-bg;
-}
-
-
-// ---------------------------------------------
-//  NAVIGATION
-// ---------------------------------------------
-header{
-
-}
-
-
 // ---------------------------------------------
 //  NOTIFICATION SECTION
 // ---------------------------------------------
 section#notifications{
+  position: fixed;
+  top: @navbar-height;
+  right: 0;
+  left: 0;
   .notification{
     color: @body-bg;
+    a{
+      color: @body-bg;
+      font-weight: bold;
+    }
     &.warning{
       background-color: @brand-warning;
     }
     &.danger{
       background-color: @brand-danger;
     }
-    a{
-      color: @body-bg;
-      font-weight: bold;
-    }
   }
 }
-
-
-
-// ---------------------------------------------
-//  TITLE SECTION
-// ---------------------------------------------
-section#title{
-  // Example of the animation defined in animation.less
-  .animation-name(fadeIn);
-  .animation-duration(1s);
-  .animation-fill-mode(both);
-}
-
 
 // ---------------------------------------------
 //  MAIN SECTION
 // ---------------------------------------------
-section#main {
-  // Fade in main content
-  .animation-name(fadeIn);
-  .animation-duration(1s);
-  .animation-fill-mode(both);
+
+section#main{
+  header{
+    height: 250px;
+    .background-size(cover);
+    background-position: center;
+    background-image: url('../img/header.jpg');
+
+    .animation-name(fadeIn);
+    .animation-duration(1s);
+    .animation-fill-mode(both);
+  }
 
   section {
-      padding: 20px 0;
+    padding: 40px 0;
 
-      &#generate{
-        .background-size(cover);
-        background-position: center;
-        background-image: url('../img/header.jpg');
-        color: @body-bg;
-      }
-      &#profile{
-        opacity: 0;
-        #profilePic{
-          max-width: 300px;
-        }
-      }
+    &#generate{
+      .animation-name(fadeIn);
+      .animation-duration(1s);
+      .animation-delay(0.2s);
+      .animation-fill-mode(both);
+    }
   }
 }
 

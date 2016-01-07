@@ -1,9 +1,9 @@
 module.exports = function(grunt, options){
   return {
     options: {
-      compress: false,
-      beautify: true,
-      mangle: false
+      //compress: false,
+      //beautify: true,
+      //mangle: false
     },
     head: {
       src: [
@@ -25,16 +25,16 @@ module.exports = function(grunt, options){
         // -------------------------------------------------------
         // Bootstrap library in the correct order
         // -------------------------------------------------------
-        'src/js/body/libs/bootstrap/transition.js', 
+        //'src/js/body/libs/bootstrap/transition.js', 
         //'src/js/body/libs/bootstrap/alert.js',
         //'src/js/body/libs/bootstrap/button.js',
         //'src/js/body/libs/bootstrap/carousel.js',
-        'src/js/body/libs/bootstrap/collapse.js',
+        //'src/js/body/libs/bootstrap/collapse.js',
         //'src/js/body/libs/bootstrap/dropdown.js',
         //'src/js/body/libs/bootstrap/modal.js',
         //'src/js/body/libs/bootstrap/tooltip.js',
         //'src/js/body/libs/bootstrap/popover.js',
-        'src/js/body/libs/bootstrap/scrollspy.js',
+        //'src/js/body/libs/bootstrap/scrollspy.js',
         //'src/js/body/libs/bootstrap/tab.js',
         //'src/js/body/libs/bootstrap/affix.js',
 

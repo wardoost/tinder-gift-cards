@@ -5,22 +5,37 @@ block vars
   -metaKeywordsPage = ""; //- Extra keywords for this page
 
 block content
-  section#generate
+  div#header-bar
     .container
-      .row
-        .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.text-center
-          h2.section-heading Generate your TinderMe Card
-          hr.primary
-          form(role="form" data-toggle="validator")
-            .form-group
-              //-label.control-label(for='inputTinderUsername') Tinder username
-              .input-group
-                span.input-group-addon @
-                input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
-            button#generateBtn.btn.btn-primary(type='submit') Generate PDF
+      //- Website name or image comes here
+      a(href="#page-top")#logo.h3 #{websiteTitle}      
 
-  section#profile
+  //- Notifications for old browsers and no javscript
+  section#notifications
+    <!--[if lt IE 8]>
+    <div class="notification danger">
+    <div class="container">
+    <h5>You are using a dangerously old browser which may cause this site to not work properly. <a href="http://windows.microsoft.com/nl-BE/internet-explorer/download-ie">Please update</a> your browser to have a richer and safer browsing experience.</h5>
+    </div>
+    </div>
+    <![endif]-->
+    noscript: .notification.warning
+      .container.text-center: h5 JavaScript is disabled which may cause this site to not work properly. Please enable JavaScript in your web browser.
+
+  section#main
+    header
+
+    section#generate
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text-center
+            form(role="form" data-toggle="validator")
+              .form-group
+                .input-group
+                  span.input-group-addon @
+                  input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
+              button#generateBtn.btn.btn-primary(type='submit') Generate PDF
+
+  footer
     .container
-      .row
-        .col-lg-12
-          img(src="" alt="profile picture").img-circle.center-block#profilePic
+        p.text-footer #{websiteTitle} | Last update on #{timeStamp}
