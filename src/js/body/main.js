@@ -79,7 +79,7 @@ var getUserData = function(tinderUsername){
 var generatePDF = function(url, username, name, imgData){
   // Create PDF
   var doc = new jsPDF('p', 'mm', [297, 210]);
-  
+
   // Add user data 
   doc.addFont('GothamRoundedMedium', 'Gotham Rounded', 'medium');
   doc.setFont('Gotham Rounded');
