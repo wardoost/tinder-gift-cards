@@ -56,7 +56,7 @@ var getUserData = function(tinderUsername){
     success: function(data) {
       var result = jQuery.parseJSON(data);
 
-      if(result.age){
+      if(result.name){
         var name = result.name;  
       }
       if(result.age){
@@ -71,7 +71,7 @@ var getUserData = function(tinderUsername){
     },
     error: function(){
       // Generate PDF with only the web profile link
-      generatePDF(webProfileURL);
+      generatePDF(webProfileURL, tinderUsername);
     }
   });
 }
