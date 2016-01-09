@@ -10,7 +10,11 @@ var lines = [
   "My doctor says I'm lacking Vitamin U.",
   "If I were a cat I'd spend all 9 lives with you.",
   "Are you a thief because you just stole my heart?",
-  "How was heaven when you left?"
+  "How was heaven when you left?",
+  "Do I know you?",
+  "Want to dance?",
+  "You're pretty."
+
   ];
 
 // ---------------------------------------------
