@@ -1,7 +1,20 @@
+// ---------------------------------------------
+// GLOBAL VARIABLES
+// ---------------------------------------------
 var template;
+var profileDefault;
+var lines = [
+  "I like you.",
+  "Save water, shower with a friend!",
+  "I can picture you and me together.",
+  "My doctor says I'm lacking Vitamin U.",
+  "If I were a cat I'd spend all 9 lives with you.",
+  "Are you a thief because you just stole my heart?",
+  "How was heaven when you left?"
+  ];
 
 // ---------------------------------------------
-// INITIATION FUNCTION
+// FUNCTIONS
 // ---------------------------------------------
 var init = function(){
 
@@ -21,6 +34,7 @@ var init = function(){
 
   // Preload PDF template
   imgDataURL("img/template.jpg", templateLoaded);
+  imgDataURL("img/profileDefault.jpg", profileDefaultLoaded);
 
   // Generate PDF button
   $('#generateBtn').on('click', function(e) {
@@ -42,58 +56,48 @@ var getUserData = function(tinderUsername){
     success: function(data) {
       var result = jQuery.parseJSON(data);
 
-      var name = result.name;
-      var age = result.age.replace(/&nbsp;/g, '');
-      var imgData = 'data:image/jpeg;base64,' + result.imgdata;
+      if(result.age){
+        var name = result.name;  
+      }
+      if(result.age){
+        var age = result.age.replace(/&nbsp;/g, '');
+      }
+      if(result.imgdata){
+        var imgData = 'data:image/jpeg;base64,' + result.imgdata;  
+      }
 
       // Generate PDF with user info
-      generatePDF(webProfileURL, tinderUsername, name, age, imgData);
+      generatePDF(webProfileURL, tinderUsername, name, imgData);
     },
     error: function(){
       // Generate PDF with only the web profile link
-      generateAltPDF(webProfileURL);
+      generatePDF(webProfileURL);
     }
   });
 }
 
-var generatePDF = function(url, username, name, age, imgData){
+var generatePDF = function(url, username, name, imgData){
   // Create PDF
   var doc = new jsPDF('p', 'mm', [297, 210]);
-
+  
   // Add user data 
   doc.addFont('GothamRoundedMedium', 'Gotham Rounded', 'medium');
   doc.setFont('Gotham Rounded');
   doc.setFontSize(10);
   doc.text(20, 20, url.replace('http://', ''));
-  doc.text(20, 30, name);
-  doc.text(20, 40, age);
+  doc.text(20, 30, name || username);
+  doc.text(20, 40, lines[Math.floor(Math.random() * lines.length)]);
 
   // Add QR from web profile URL
   var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F' }); 
 
-for (var x=5; x < 180; x = x + 90) {
-  for (var y=5; y < 210; y = y + 60) {
-    doc.addImage(template,'JPEG',x,y,107,79); // Add template
-    doc.addImage(imgData, 'JPEG', x+68, y+21, 17, 17);  // Add web profile image
-    doc.addImage(qrcode,'JPEG', x+67, y+38, 19, 19); // Add QR-code
-    }
-}
-
-  // Download/open PDF depending on browser settings
-  doc.save('TinderMe-Card-' + username + '.pdf');
-}
-
-var generateAltPDF = function(url){
-  // Create PDF
-  var doc = new jsPDF();
-
-  // Add user data
-  doc.setFontSize(20);
-  doc.text(20, 20, url.replace('http://', ''));
-
-  // Add QR from web profile URL
-  var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F' }); 
-  doc.addImage(qrcode,'JPEG',20,50,40,40);
+  for (var x=5; x < 180; x = x + 90) {
+    for (var y=5; y < 210; y = y + 60) {
+      doc.addImage(template,'JPEG',x,y,107,79); // Add template
+      doc.addImage(imgData || profileDefault, 'JPEG', x+68, y+21, 17, 17);  // Add web profile image
+      doc.addImage(qrcode,'JPEG', x+67, y+38, 19, 19); // Add QR-code
+      }
+  }
 
   // Download/open PDF depending on browser settings
   doc.save('TinderMe-Card-' + username + '.pdf');
@@ -115,6 +119,9 @@ var imgDataURL = function(url, callback){
 
 var templateLoaded = function(imgDataURL){
   template = imgDataURL;
+}
+var profileDefaultLoaded = function(imgDataURL){
+  profileDefault = imgDataURL;
 }
 
 // ---------------------------------------------
