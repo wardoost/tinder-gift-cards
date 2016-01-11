@@ -99,13 +99,13 @@ var generatePDF = function(url, username, name, imgData){
   doc.text(20, 40, lines[Math.floor(Math.random() * lines.length)]);
 
   // Add QR from web profile URL
-  var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F' }); 
+  var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F', level: 'M' }); 
 
   for (var x=5; x < 180; x = x + 90) {
     for (var y=5; y < 210; y = y + 60) {
       doc.addImage(template,'JPEG',x,y,107,79); // Add template
       doc.addImage(imgData || profileDefault, 'JPEG', x+68, y+21, 17, 17);  // Add web profile image
-      doc.addImage(qrcode,'JPEG', x+67, y+38, 19, 19); // Add QR-code
+      doc.addImage(qrcode,'JPEG', x+67, y+40, 19, 19); // Add QR-code
       }
   }
 
