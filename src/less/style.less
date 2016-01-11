@@ -49,14 +49,29 @@ section#notifications{
 
 section#main{
   header{
-    height: 250px;
-    .background-size(cover);
-    background-position: center;
-    background-image: url('../img/header.jpg');
-
     .animation-name(fadeIn);
     .animation-duration(1s);
     .animation-fill-mode(both);
+
+    .background-size(cover);
+    background-position: center;
+    background-image: url('../img/header.jpg');
+    height: 230px;
+    @media @xxs{
+      height: 270px;
+    }
+    @media @xs{
+      height: 325px;
+    }
+    @media @md{
+      height: 400px;
+    }
+    @media @lg{
+      height: 450px;
+    }
+    @media @xlg{
+      height: 500px;
+    }
   }
 
   section {

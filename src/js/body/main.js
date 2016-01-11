@@ -13,8 +13,14 @@ var lines = [
   "How was heaven when you left?",
   "Do I know you?",
   "Want to dance?",
-  "You're pretty."
-
+  "You're pretty.",
+  "Where do you hide your wings?",
+  "You don't need keys to drive me crazy.",
+  "You're so fine I must be dreaming.",
+  "If beauty were time, you'd be eternity.",
+  "I super like you.",
+  "I will swipe you right",
+  "I would swipe you right"
   ];
 
 // ---------------------------------------------
