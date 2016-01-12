@@ -25,7 +25,29 @@ block content
   section#main
     header
 
-    section#generate
+    section#steps
+      .container
+        .row
+          .col-sm-4
+            .box
+              i.icon.icon-card
+              .content
+                h3 Generate
+                p The only thing the card generator needs is your Tinder username.
+          .col-sm-4
+            .box
+              i.icon.icon-print
+              .content
+                h3 Print
+                p Print your pdf and cut your 8 personalized TinderMe cards on a regular printing paper.
+          .col-sm-4
+            .box
+              i.icon.icon-heart
+              .content
+                h3 Flirt
+                p Start flirting in real life and handout your TinderMe cards to that good looking one in the bar.
+
+    section#generate.dark
       .container
         .row
           .col-sm-8.col-sm-offset-2.text-center
@@ -34,7 +56,38 @@ block content
                 .input-group
                   span.input-group-addon @
                   input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
-              button#generateBtn.btn.btn-primary(type='submit') Generate PDF
+              button#generateBtn.btn.btn-primary(type='submit')
+                div.icon.icon-download
+                | Generate PDF
+    
+    section#pdf
+      .container
+        .row
+          .col-sm-12
+            h1 What’s in my PDF?
+        .row
+          .col-sm-6
+            img(src="img/pdf.svg")
+          .col-sm-6
+            ul
+              li In A4 format with 8 TinderMe cards
+              li Every card has a unique pickup line!
+              li Your first Tinder profile picture
+              li QR code to your Tinder profile
+
+    section#tutorial
+      .container
+        .row
+          .col-sm-12
+            h1 What’s my Tinder username?
+        .row
+          .col-sm-6
+            ol
+              li Go to settings in Tinder
+              li “Discovery Settings”
+              li Tap “Username” and claim yours
+          .col-sm-6
+            img(src="img/tutorial.gif")
 
   footer
     .container

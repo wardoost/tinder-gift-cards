@@ -56,32 +56,79 @@ section#main{
     .background-size(cover);
     background-position: center;
     background-image: url('../img/header.jpg');
-    height: 230px;
+    height: 200px;
     @media @xxs{
-      height: 270px;
+      height: 300px;
     }
     @media @xs{
-      height: 325px;
-    }
-    @media @md{
       height: 400px;
     }
+    @media @md{
+      height: 550px;
+    }
     @media @lg{
-      height: 450px;
+      height: 700px;
     }
     @media @xlg{
-      height: 500px;
+      height: 800px;
     }
   }
 
   section {
-    padding: 40px 0;
+    padding: 20px 0;
 
-    &#generate{
+    &.dark{
+      background-color: #cccccc;
+    }
+
+    &#steps{
       .animation-name(fadeIn);
       .animation-duration(1s);
       .animation-delay(0.2s);
       .animation-fill-mode(both);
+
+      padding-top: 70px;
+      padding-bottom: 0;
+      .box{
+        box-shadow: 0px 1px 5px fade(@black, 50%);
+        padding: 0 20px;
+        margin-bottom: 60px;
+        border-radius: 4px;
+        text-align: center;
+        min-height: 220px;
+        .icon{
+          text-align: center;
+          display: inline-block;
+          border-radius: 50%;
+          background-color: @brand-primary;
+          width: 80px;
+          height: 80px;
+          position: relative;
+          top: -40px;
+          padding-top: 25px;
+          color: @body-bg;
+          font-size: 30px;
+        }
+        .content{
+          margin-top: -30px;
+        }
+      }
+    }
+
+    &#generate{
+      .animation-name(fadeIn);
+      .animation-duration(1s);
+      .animation-delay(0.4s);
+      .animation-fill-mode(both);
+    }
+
+    &#pdf{
+      .animation-name(fadeIn);
+      .animation-duration(1s);
+      .animation-delay(0.6s);
+      .animation-fill-mode(both);
+
+      border-bottom: 8px solid #cccccc;
     }
   }
 }
@@ -91,8 +138,12 @@ section#main{
 //  FOOTER
 // ---------------------------------------------
 footer {
+  background-color: @brand-primary;
   .text-footer{
+    margin: 5px 0;
+    color: @body-bg;
     .text-center();
     font-size: @font-size-small;
+    font-weight: lighter
   }
 }
