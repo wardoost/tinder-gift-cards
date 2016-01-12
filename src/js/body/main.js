@@ -5,7 +5,7 @@ var template;
 var logo;
 var profileDefault;
 
-//Comment lins -> don't cross the 27 characters
+// <27 characters. 
 var lines = [
   "I like you.",
   "Do I know you?",
@@ -17,7 +17,26 @@ var lines = [
   "You are the one",
   "You have some nice moves", 
   "let's have a drink!",
-  "I don't know you!"
+  "I don't know you",
+  "You're so beautiful",
+  "I don't think we've met",
+  "I'm intoxicated by you",
+  "How was heaven when you left it?",
+  "Can I borrow a kiss?",
+  "What's on the menu? Me-n-U",
+  "Be unique, swipe right",
+  "Is it hot in here?",
+  "You should be someone's wife",
+  "Roll, baby.You are on fire",
+  "I blame you for global warming",
+  "Are we destined to be married?",
+  "You’re my favorite weakness",
+  "You are cool",
+  "I'm happy to meet you",
+  "Nice to see you",
+  "I superlike you",
+  "I swipe you up",
+  "Let's have a Tinder chat"
   ];
 
 // ---------------------------------------------
