@@ -3,24 +3,18 @@
 // ---------------------------------------------
 var template;
 var profileDefault;
+
+//Comment lins -> don't cross the 27 characters
 var lines = [
   "I like you.",
-  "Save water, shower with a friend!",
-  "I can picture you and me together.",
-  "My doctor says I'm lacking Vitamin U.",
-  "If I were a cat I'd spend all 9 lives with you.",
-  "Are you a thief because you just stole my heart?",
-  "How was heaven when you left?",
   "Do I know you?",
   "Want to dance?",
   "You're pretty.",
-  "Where do you hide your wings?",
-  "You don't need keys to drive me crazy.",
-  "You're so fine I must be dreaming.",
-  "If beauty were time, you'd be eternity.",
   "I super like you.",
   "I will swipe you right",
-  "I would swipe you right"
+  "I would swipe you right",
+  "You are the one",
+  "Nice moves!"
   ];
 
 // ---------------------------------------------
@@ -90,27 +84,34 @@ var generatePDF = function(url, username, name, imgData){
   // Create PDF
   var doc = new jsPDF('p', 'mm', [297, 210]);
 
-  // Add user data 
-  doc.addFont('GothamRoundedMedium', 'Gotham Rounded', 'medium');
-  doc.setFont('Gotham Rounded');
-  doc.setFontSize(10);
-  doc.text(20, 20, url.replace('http://', ''));
-  doc.text(20, 30, name || username);
-  doc.text(20, 40, lines[Math.floor(Math.random() * lines.length)]);
 
   // Add QR from web profile URL
   var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F', level: 'M' }); 
 
-  for (var x=5; x < 180; x = x + 90) {
-    for (var y=5; y < 210; y = y + 60) {
+  //Setup Font
+  doc.addFont('ProximaNovaSoft-Bold', 'Proxima Nova Soft Bold', 'Bold');
+  doc.setTextColor(52,51,63);
+  doc.setFontType("Bold");
+
+
+  for (var x=0; x < 180; x = x + 90) {
+    for (var y=0; y < 210; y = y + 60) {
       doc.addImage(template,'JPEG',x,y,107,79); // Add template
       doc.addImage(imgData || profileDefault, 'JPEG', x+68, y+21, 17, 17);  // Add web profile image
       doc.addImage(qrcode,'JPEG', x+67, y+40, 19, 19); // Add QR-code
+
+      //add userdata
+      doc.setFontSize(6);
+      doc.text(x+25, y+54, url.replace('http://', ''));
+      doc.setFontSize(10);
+      doc.text(x+23, y+32, 'My name is ' + name || username);
+      doc.text(x+23, y+36, lines[Math.floor(Math.random() * lines.length)]);
       }
   }
 
-  // Download/open PDF depending on browser settings
+  // Download/open PDF depending on browser settings 
   doc.save('TinderMe-Card-' + username + '.pdf');
+
 }
 
 var imgDataURL = function(url, callback){

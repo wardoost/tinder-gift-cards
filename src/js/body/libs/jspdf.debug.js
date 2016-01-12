@@ -781,18 +781,18 @@ var jsPDF = (function(global) {
 			case 'sans-serif':
 			case 'verdana':
 			case 'arial':
-				fontName = 'helvetica';
+				fontName = 'arial';
 				break;
 			case 'fixed':
 			case 'monospace':
 			case 'terminal':
-				fontName = 'courier';
+				fontName = 'terminal';
 				break;
 			case 'serif':
 			case 'cursive':
 			case 'fantasy':
 				default:
-				fontName = 'times';
+				fontName = 'Proxima Nova Soft Bold';
 				break;
 			}
 
