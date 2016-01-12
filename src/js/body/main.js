@@ -2,6 +2,7 @@
 // GLOBAL VARIABLES
 // ---------------------------------------------
 var template;
+var logo;
 var profileDefault;
 
 //Comment lins -> don't cross the 27 characters
@@ -14,7 +15,9 @@ var lines = [
   "I will swipe you right",
   "I would swipe you right",
   "You are the one",
-  "Nice moves!"
+  "You have some nice moves", 
+  "let's have a drink!",
+  "I don't know you!"
   ];
 
 // ---------------------------------------------
@@ -38,6 +41,7 @@ var init = function(){
 
   // Preload PDF template
   imgDataURL("img/template.jpg", templateLoaded);
+  imgDataURL("img/logo.jpg", logoLoaded);
   imgDataURL("img/profileDefault.jpg", profileDefaultLoaded);
 
   // Generate PDF button
@@ -68,6 +72,7 @@ var getUserData = function(tinderUsername){
       }
       if(result.imgdata){
         var imgData = 'data:image/jpeg;base64,' + result.imgdata;  
+
       }
 
       // Generate PDF with user info
@@ -88,14 +93,14 @@ var generatePDF = function(url, username, name, imgData){
   // Add QR from web profile URL
   var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F', level: 'M' }); 
 
-  //Setup Font
+  // Setup Font
   doc.addFont('ProximaNovaSoft-Bold', 'Proxima Nova Soft Bold', 'Bold');
   doc.setTextColor(52,51,63);
   doc.setFontType("Bold");
 
 
-  for (var x=0; x < 180; x = x + 90) {
-    for (var y=0; y < 210; y = y + 60) {
+  for (var x=3; x < 180; x = x + 95) {
+    for (var y=3; y < 210; y = y + 65) {
       doc.addImage(template,'JPEG',x,y,107,79); // Add template
       doc.addImage(imgData || profileDefault, 'JPEG', x+68, y+21, 17, 17);  // Add web profile image
       doc.addImage(qrcode,'JPEG', x+67, y+40, 19, 19); // Add QR-code
@@ -108,6 +113,9 @@ var generatePDF = function(url, username, name, imgData){
       doc.text(x+23, y+36, lines[Math.floor(Math.random() * lines.length)]);
       }
   }
+
+  // Add logo 
+  doc.addImage(logo,'JPEG', 153, 282, 50.326, 9.532); //
 
   // Download/open PDF depending on browser settings 
   doc.save('TinderMe-Card-' + username + '.pdf');
@@ -130,6 +138,9 @@ var imgDataURL = function(url, callback){
 
 var templateLoaded = function(imgDataURL){
   template = imgDataURL;
+}
+var logoLoaded = function(imgDataURL){
+  logo = imgDataURL;
 }
 var profileDefaultLoaded = function(imgDataURL){
   profileDefault = imgDataURL;
