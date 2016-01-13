@@ -792,7 +792,7 @@ var jsPDF = (function(global) {
 			case 'cursive':
 			case 'fantasy':
 				default:
-				fontName = 'Proxima Nova Soft Bold';
+				fontName = 'Verdana Bold';
 				break;
 			}
 

@@ -16,27 +16,27 @@ var lines = [
   "I would swipe you right",
   "You are the one",
   "You have some nice moves", 
-  "let's have a drink!",
+  "let's have a drink",
   "I don't know you",
   "You're so beautiful",
   "I don't think we've met",
   "I'm intoxicated by you",
-  "How was heaven when you left it?",
   "Can I borrow a kiss?",
-  "What's on the menu? Me-n-U",
   "Be unique, swipe right",
   "Is it hot in here?",
-  "You should be someone's wife",
   "Roll, baby.You are on fire",
-  "I blame you for global warming",
-  "Are we destined to be married?",
-  "You’re my favorite weakness",
+  "You're my favorite weakness",
   "You are cool",
   "I'm happy to meet you",
   "Nice to see you",
   "I superlike you",
   "I swipe you up",
-  "Let's have a Tinder chat"
+  "Let's have a Tinder chat",
+  "I think I like you",
+  "Finally I found a Girl like you",
+  "Believe in love at first swipe", 
+  "Nice to meet ya",
+  "I swipe you right"
   ];
 
 // ---------------------------------------------
@@ -113,9 +113,12 @@ var generatePDF = function(url, username, name, imgData){
   var qrcode = qr.toDataURL({ mime: 'image/jpeg', value: url, background: '#FFFFFF', foreground: '#34333F', level: 'M' }); 
 
   // Setup Font
-  doc.addFont('ProximaNovaSoft-Bold', 'Proxima Nova Soft Bold', 'Bold');
+  //doc.addFont('ProximaNovaSoft-Bold', 'Proxima Nova Soft Bold', 'Bold'); // library can not embed fonts :(
+  doc.addFont('Verdana-Bold','Verdana Bold','Regular');
+  console.log(doc.getFontList());
+  doc.setFont('Verdana Bold');
+  doc.setFontStyle('Regular');
   doc.setTextColor(52,51,63);
-  doc.setFontType("Bold");
 
 
   for (var x=3; x < 180; x = x + 95) {
@@ -125,16 +128,17 @@ var generatePDF = function(url, username, name, imgData){
       doc.addImage(qrcode,'JPEG', x+67, y+40, 19, 19); // Add QR-code
 
       //add userdata
+      doc.setFontSize(10);
+      doc.text(x+23, y+31, 'My name is ' + name || username);
+      doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(6);
       doc.text(x+25, y+54, url.replace('http://', ''));
-      doc.setFontSize(10);
-      doc.text(x+23, y+32, 'My name is ' + name || username);
-      doc.text(x+23, y+36, lines[Math.floor(Math.random() * lines.length)]);
       }
   }
 
-  // Add logo 
-  doc.addImage(logo,'JPEG', 153, 282, 50.326, 9.532); //
+  // Add logo and website
+  doc.addImage(logo,'JPEG', 153, 282, 50.326, 9.532); 
+  doc.text(20, 290, 'www.tinderme.cards');
 
   // Download/open PDF depending on browser settings 
   doc.save('TinderMe-Card-' + username + '.pdf');
@@ -164,6 +168,7 @@ var logoLoaded = function(imgDataURL){
 var profileDefaultLoaded = function(imgDataURL){
   profileDefault = imgDataURL;
 }
+
 
 // ---------------------------------------------
 // INITIATION ON PAGE LOAD
