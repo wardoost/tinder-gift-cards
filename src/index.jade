@@ -5,11 +5,6 @@ block vars
   -metaKeywordsPage = ""; //- Extra keywords for this page
 
 block content
-  div#header-bar
-    .container
-      //- Website name or image comes here
-      a(href="#page-top")#logo.h3 #{websiteTitle}      
-
   //- Notifications for old browsers and no javscript
   section#notifications
     <!--[if lt IE 8]>
@@ -50,14 +45,17 @@ block content
     section#generate.dark
       .container
         .row
-          .col-sm-8.col-sm-offset-2.text-center
+          .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.text-center
             form(role="form" data-toggle="validator" onsubmit="return false;")
               .form-group
-                .input-group
+                .input-group.input-group-lg
                   span.input-group-addon @
                   input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
-              button#generateBtn.btn.btn-primary(type='submit')
-                div.icon.icon-download
+                  .input-group-btn
+                    a(href="#tutorial").btn.btn-info
+                      span.icon.icon-question
+
+              button.btn.btn-lg.btn-primary(type='submit')#generateBtn
                 | Generate PDF
     
     section#pdf
@@ -65,29 +63,29 @@ block content
         .row
           .col-sm-12
             h1 What’s in my PDF?
-        .row
-          .col-sm-6
-            img(src="img/pdf.svg")
-          .col-sm-6
+        .row#advantages
+          .col-sm-5
+            img(src="img/pdf.svg").img-responsive
+          .col-sm-7
             ul
-              li In A4 format with 8 TinderMe cards
-              li Every card has a unique pickup line!
-              li Your first Tinder profile picture
-              li QR code to your Tinder profile
+              li.icon-doc In A4 format with 8 TinderMe cards
+              li.icon-lines Every card has a unique pickup line!
+              li.icon-profile Your first Tinder profile picture
+              li.icon-qr QR code to your Tinder profile
 
     section#tutorial
       .container
         .row
           .col-sm-12
             h1 What’s my Tinder username?
-        .row
+        .row#steps
           .col-sm-6
             ol
               li Go to settings in Tinder
               li “Discovery Settings”
               li Tap “Username” and claim yours
           .col-sm-6
-            img(src="img/tutorial.gif")
+            img(src="img/tutorial.gif").img-responsive
 
   footer
     .container
