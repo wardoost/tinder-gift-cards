@@ -18,7 +18,10 @@ block content
       .container.text-center: h5 JavaScript is disabled which may cause this site to not work properly. Please enable JavaScript in your web browser.
 
   section#main
-    header
+    header(class="parallax-window" data-parallax="scroll" data-image-src="img/header.jpg")
+      img(src="img/logo.svg" alt="TinderMe Cards").img-responsive
+      a(href="#steps")#nextBtn
+        span.icon.icon-down
 
     section#steps
       .container
@@ -65,7 +68,7 @@ block content
             h1 What’s in my PDF?
         .row#advantages
           .col-sm-5
-            img(src="img/pdf.svg").img-responsive
+            img(src="img/pdf.svg" alt="pdf").img-responsive
           .col-sm-7
             ul
               li.icon-doc In A4 format with 8 TinderMe cards
@@ -77,15 +80,15 @@ block content
       .container
         .row
           .col-sm-12
-            h1.text-right What’s my Tinder username?
+            h1 What’s my Tinder username?
         .row#steps
           .col-sm-6
             ol
-              li Go to settings in Tinder
-              li “Discovery Settings”
-              li Tap “Username” and claim yours
+              li.icon-n1 Go to settings in Tinder
+              li.icon-n2 “Discovery Settings”
+              li.icon-n3 Tap “Username” and claim yours
           .col-sm-6
-            img(src="img/tutorial.gif").img-responsive
+            img(src="img/tutorial.gif" alt="tutorial").img-responsive
 
   footer
     .container

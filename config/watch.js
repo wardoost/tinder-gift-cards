@@ -20,7 +20,7 @@ module.exports = function(grunt, options){
       tasks: ['uglify:body', 'notify:refresh']
     },
     images: {
-      files: ['src/img/**/*.{png,jpg,jpeg,gif}', '!src/img/favicon.png'],
+      files: ['src/img/**/*.{png,jpg,jpeg,gif,svg}', '!src/img/favicon.png'],
       tasks: ['imagemin', 'notify:refresh']
     },
     fonts: {

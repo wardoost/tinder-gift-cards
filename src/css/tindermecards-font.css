@@ -9,6 +9,7 @@
     url("fonts/tindermecards.svg#tindermecards") format("svg");
   font-weight: normal;
   font-style: normal;
+
 }
 
 [data-icon]:before {
@@ -63,4 +64,16 @@
 }
 .icon-question:before {
   content: "\69";
+}
+.icon-n3:before {
+  content: "\6a";
+}
+.icon-n2:before {
+  content: "\6b";
+}
+.icon-n1:before {
+  content: "\6c";
+}
+.icon-down:before {
+  content: "\6d";
 }

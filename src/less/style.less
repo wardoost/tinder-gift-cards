@@ -36,24 +36,41 @@ section#main{
     .animation-duration(1s);
     .animation-fill-mode(both);
 
-    .background-size(cover);
-    background-position: center;
-    background-image: url('../img/header.jpg');
-    height: 200px;
-    @media @xxs{
-      height: 300px;
-    }
-    @media @xs{
-      height: 400px;
-    }
+    position: relative;
+    height: 210px;
+    padding: 15px;
+    text-align: center;
     @media @md{
-      height: 550px;
+      padding: 40px;
+      text-align: left;
     }
-    @media @lg{
-      height: 700px;
+    img{
+      display: inline-block;
+      max-width: 200px;
+      @media @xs{
+        max-width: 250px;
+      }
+      @media @sm{
+        max-width: 300px;
+      }
+      @media @md{
+        max-width: 350px;
+      }
+      @media @lg{
+        max-width: 400px;
+      }
     }
-    @media @xlg{
-      height: 800px;
+    #nextBtn{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      color: @body-bg;
+      font-size: 30px;
+      text-shadow: 0px 1px 2px fade(@black, 50%);
+      min-height: 44px;
+      text-decoration: none;
     }
   }
 
@@ -72,13 +89,15 @@ section#main{
 
       padding-top: 70px;
       padding-bottom: 0;
+      text-align: center;
       .box{
+        display: inline-block;
         box-shadow: 0px 1px 5px fade(@black, 50%);
         padding: 0 20px;
         margin-bottom: 60px;
         border-radius: @border-radius-base;
-        text-align: center;
         min-height: 220px;
+        max-width: 230px;
         .icon{
           text-align: center;
           display: inline-block;
@@ -118,28 +137,42 @@ section#main{
       font-size: @font-size-large;
       border-bottom: 8px solid #cccccc;
 
+      h1{
+        text-align: center;
+        @media @sm{
+          text-align: left;
+        }
+      }
+
       .row#advantages{
         margin: 50px 0;
         text-align: center;
         img{
           display: inline-block;
+          max-width: 200px;
+          @media @xs{
+            max-width: 250px;
+          }
+          @media @lg{
+            max-width: 300px;
+          }
+          @media @xlg{
+            
+          }
         }
         ul{
           margin: 50px auto 0 auto;
           display: inline-block;
           text-align: left;
           @media @md{
-            margin-top: 100px;
+            margin-top: 65px;
           }
           @media @lg{
-            margin-top: 130px;
-          }
-          @media @xlg{
-            margin-top: 150px;
+            margin-top: 100px;
           }
           li{
             margin: 20px 0;
-            list-style:none;
+            list-style: none;
             &:before{
               font-family: 'tindermecards';
               float: left;
@@ -170,6 +203,13 @@ section#main{
 
       font-size: @font-size-large;
 
+      h1{
+        text-align: center;
+        @media @sm{
+          text-align: right;
+        }
+      }
+
       .row#steps{
         margin: 50px 0;
         text-align: center;
@@ -187,6 +227,22 @@ section#main{
           }
           li{
             margin: 20px 0;
+            list-style: none;
+            &:before{
+              font-family: 'tindermecards';
+              float: left;
+              margin-left: -40px;
+              font-size: @font-size-large + 5;
+            }
+            &.icon-n1:before{
+              content: "\6c";
+            }
+            &.icon-n2:before{
+              content: "\6b";
+            }
+            &.icon-n3:before{
+              content: "\6a";
+            }
           }
         }
       }

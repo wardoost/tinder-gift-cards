@@ -58,15 +58,24 @@ var init = function(){
        });
   });
 
-  // Preload PDF template
-  imgDataURL("img/template.jpg", templateLoaded);
-  imgDataURL("img/logo.jpg", logoLoaded);
-  imgDataURL("img/profileDefault.jpg", profileDefaultLoaded);
+  // Preload PDF images
+  imgDataURL('img/template.jpg', templateLoaded);
+  imgDataURL('img/logo.jpg', logoLoaded);
+  imgDataURL('img/profileDefault.jpg', profileDefaultLoaded);
 
   // Generate PDF button
   $('#generateBtn').on('click', function(e) {
     e.preventDefault();
     getUserData($('#inputTinderUsername').val());
+  });
+
+
+  // Resize header image
+  resizeHandler();
+  var resizeTimer;
+  $(window).resize(function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeHandler, 50);
   });
 }
 
@@ -167,6 +176,16 @@ var logoLoaded = function(imgDataURL){
 }
 var profileDefaultLoaded = function(imgDataURL){
   profileDefault = imgDataURL;
+}
+var resizeHandler = function(){
+  var padding = parseInt($('header').css("padding"));
+  var headerRatio = 1697 / 1131; // Header image ratio
+  var windowRatio = $(window).width() / ($(window).height() - 2 * padding);
+  if(headerRatio < windowRatio){
+    $('header').height($(window).height() - 2 * padding);
+  }else{
+    $('header').height(1131 / 1697 * $(window).width());
+  }
 }
 
 
