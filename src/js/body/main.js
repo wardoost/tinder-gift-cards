@@ -100,11 +100,14 @@ var getUserData = function(tinderUsername){
       }
       if(result.imgdata){
         var imgData = 'data:image/jpeg;base64,' + result.imgdata;  
+      }
 
+      if(result.work){
+        var work = result.work;
       }
 
       // Generate PDF with user info
-      generatePDF(webProfileURL, tinderUsername, name, imgData);
+      generatePDF(webProfileURL, tinderUsername, name, imgData, work);
     },
     error: function(){
       // Generate PDF with only the web profile link
@@ -113,7 +116,7 @@ var getUserData = function(tinderUsername){
   });
 }
 
-var generatePDF = function(url, username, name, imgData){
+var generatePDF = function(url, username, name, imgData, work){
   // Create PDF
   var doc = new jsPDF('p', 'mm', [297, 210]);
 
@@ -137,10 +140,11 @@ var generatePDF = function(url, username, name, imgData){
       doc.addImage(qrcode,'JPEG', x+67, y+40, 19, 19); // Add QR-code
 
       //add userdata
-      doc.setFontSize(10);
-      doc.text(x+23, y+31, 'My name is ' + name || username);
-      doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
-      doc.setFontSize(6);
+      doc.setFontSize(14);
+      doc.text(x+23, y+24, name || username);
+      //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
+      doc.setFontSize(8);
+      doc.text(x+23, y+28, work) || '';
       doc.text(x+25, y+54, url.replace('http://', ''));
       }
   }

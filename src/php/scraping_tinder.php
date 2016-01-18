@@ -14,6 +14,9 @@ $data['age'] = $html->find('div[id="info-container"] span[id="age"]', 0)->innert
 $data['imgsrc'] = str_replace("&#x2F;", "/", $html->find('img[id="user-photo"]', 0)->src);
 $data['imgdata'] = base64_encode(file_get_contents($data['imgsrc']));
 
+// get work
+$data['work'] = $html->find('div[id="teaser-container"] span[id="teaser"]', 0)->innertext;
+
 // clean up memory
 $html->clear();
 unset($html);
