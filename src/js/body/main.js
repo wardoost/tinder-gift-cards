@@ -64,19 +64,17 @@ var init = function(){
   imgDataURL('img/profileDefault.jpg', profileDefaultLoaded);
 
   // Generate PDF button
-  $('#generateBtn').on('click', function(e) {
+  $('#generateBtn').click(function(e) {
     e.preventDefault();
     getUserData($('#inputTinderUsername').val());
   });
 
-
-  // Resize header image
+  // Resize header section
   resizeHandler();
-  var resizeTimer;
-  $(window).resize(function(){
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resizeHandler, 50);
-  });
+  $(window).resize(resizeHandler);
+  // Scroll fade ins
+  scrollHandler();
+  $(window).scroll(scrollHandler);
 }
 
 var getUserData = function(tinderUsername){
@@ -144,7 +142,7 @@ var generatePDF = function(url, username, name, imgData, work){
       doc.text(x+23, y+24, name || username);
       //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(8);
-      doc.text(x+23, y+28, work) || '';
+      doc.text(x+23, y+28, work || '') ;
       doc.text(x+25, y+54, url.replace('http://', ''));
       }
   }
@@ -181,15 +179,47 @@ var logoLoaded = function(imgDataURL){
 var profileDefaultLoaded = function(imgDataURL){
   profileDefault = imgDataURL;
 }
+
 var resizeHandler = function(){
   var padding = parseInt($('header').css("padding"));
-  var headerRatio = 1697 / 1131; // Header image ratio
+  var headerRatio = (1697 - 100) / 1131; // Header image ratio
   var windowRatio = $(window).width() / ($(window).height() - 2 * padding);
   if(headerRatio < windowRatio){
     $('header').height($(window).height() - 2 * padding);
   }else{
-    $('header').height(1131 / 1697 * $(window).width());
+    $('header').height(1131 / (1697 - 100) * $(window).width());
   }
+
+  // Trigger scrollHandler again
+  scrollHandler();
+}
+
+var scrollHandler = function(){
+  $('.scrollFadeIn').each( function(i){
+
+      var bottomOfObject = $(this).offset().top + $(this).outerHeight();
+      var bottomOfWindow = $(window).scrollTop() + $(window).height();
+
+      var percDown = $(window).scrollTop() / $('header').outerHeight();
+      if($(window).width() >= 768){
+        if( bottomOfWindow > bottomOfObject - $(this).outerHeight() * 0.75 ){
+          $(this).addClass('visible');
+        }
+      } else {
+        if( bottomOfWindow > bottomOfObject - $(this).outerHeight()){
+          $(this).addClass('visible');
+        }
+      }
+      
+  });
+
+  var percDown = $(window).scrollTop() / $('header').outerHeight();
+  if($(window).width() >= 768){
+    var newBottom = 15 + percDown * 0.4 * 100;
+  }else{
+    var newBottom = 60 + percDown * 0.1 * 100;
+  }
+  $('header #cards').css('transform', 'translateY(' + newBottom + '%)');
 }
 
 

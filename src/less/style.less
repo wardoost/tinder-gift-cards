@@ -1,7 +1,15 @@
 @import "bootstrap.less";
 @import "mixins.less";
-@import "animation.less";
 @import "fonts.less";
+
+// Fade in on scroll helper class
+.scrollFadeIn{
+  opacity: 0;
+  .transition(opacity 1s);
+  &.visible{
+    opacity: 1;
+  }
+}
 
 // ---------------------------------------------
 //  NOTIFICATION SECTION
@@ -32,64 +40,58 @@ section#notifications{
 
 section#main{
   header{
-    .animation-name(fadeIn);
-    .animation-duration(1s);
-    .animation-fill-mode(both);
-
     position: relative;
     height: 210px;
-    padding: 15px;
+    padding: 5px;
     text-align: center;
+    min-height: 200px;
+    #logo{
+      display: inline-block;
+      max-width: 400px;
+      width: 75%;
+    }
+    #cards{
+      width: 90%;
+      max-width: 400px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      transform: translateY(60%);
+    }
+    @media @sm{
+      padding: 15px;
+    }
     @media @md{
+      bottom: -5%;
       padding: 40px;
       text-align: left;
-    }
-    img{
-      display: inline-block;
-      max-width: 200px;
-      @media @xs{
-        max-width: 250px;
+      #logo, #cards{
+        width: 50%;
       }
-      @media @sm{
-        max-width: 300px;
-      }
-      @media @md{
-        max-width: 350px;
-      }
-      @media @lg{
-        max-width: 400px;
-      }
-    }
-    #nextBtn{
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      text-align: center;
-      color: @body-bg;
-      font-size: 30px;
-      text-shadow: 0px 1px 2px fade(@black, 50%);
-      min-height: 44px;
-      text-decoration: none;
     }
   }
 
   section{
     padding: 20px 0;
+    .transition(opacity 1s);
 
     &.dark{
       background-color: #cccccc;
     }
 
     &#steps{
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-delay(0.2s);
-      .animation-fill-mode(both);
-
-      padding-top: 70px;
+      padding-top: 210px;
       padding-bottom: 0;
       text-align: center;
+      @media @sm{
+        padding-top: 240px;
+      }
+      @media @md{
+        padding-top: 200px;
+      }
       .box{
         display: inline-block;
         box-shadow: 0px 1px 5px fade(@black, 50%);
@@ -98,6 +100,15 @@ section#main{
         border-radius: @border-radius-base;
         min-height: 220px;
         max-width: 230px;
+        background-color: @body-bg;
+        @media @md{
+          &#print{
+            .transition-delay(0.2s);
+          }
+          &#flirt{
+            .transition-delay(0.4s);
+          }
+        }
         .icon{
           text-align: center;
           display: inline-block;
@@ -118,22 +129,12 @@ section#main{
     }
 
     &#generate{
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-delay(0.4s);
-      .animation-fill-mode(both);
-
       #generateBtn{
         width: 100%;
       }
     }
 
     &#pdf{
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-delay(0.6s);
-      .animation-fill-mode(both);
-
       font-size: @font-size-large;
       border-bottom: 8px solid #cccccc;
 
@@ -196,11 +197,6 @@ section#main{
       }
     }
     &#tutorial{
-      .animation-name(fadeIn);
-      .animation-duration(1s);
-      .animation-delay(0.8s);
-      .animation-fill-mode(both);
-
       font-size: @font-size-large;
 
       h1{
@@ -261,6 +257,9 @@ footer{
     color: @body-bg;
     .text-center();
     font-size: @font-size-small;
-    font-weight: lighter
+    a{
+      color: @body-bg;
+      font-weight: bold;
+    }
   }
 }

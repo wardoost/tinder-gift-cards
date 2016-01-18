@@ -18,28 +18,28 @@ block content
       .container.text-center: h5 JavaScript is disabled which may cause this site to not work properly. Please enable JavaScript in your web browser.
 
   section#main
-    header(class="parallax-window" data-parallax="scroll" data-image-src="img/header.jpg")
-      img(src="img/logo.svg" alt="TinderMe Cards").img-responsive
-      a(href="#steps")#nextBtn
-        span.icon.icon-down
+    a(href="#steps")
+      header(class="parallax-window" data-parallax="scroll" data-image-src="img/header.jpg")
+        img(src="img/logo.svg" alt="TinderMe Cards")#logo.img-responsive
+        img(src="img/cards.png" alt="Cards")#cards.img-responsive
 
     section#steps
       .container
         .row
           .col-sm-4
-            .box
+            .box.scrollFadeIn
               i.icon.icon-card
               .content
                 h3 Generate
                 p The only thing the card generator needs is your Tinder username.
           .col-sm-4
-            .box
+            .box.scrollFadeIn#print
               i.icon.icon-print
               .content
                 h3 Print
                 p Print your pdf and cut your 8 personalized TinderMe cards on a regular printing paper.
           .col-sm-4
-            .box
+            .box.scrollFadeIn#flirt
               i.icon.icon-heart
               .content
                 h3 Flirt
@@ -49,7 +49,7 @@ block content
       .container
         .row
           .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.text-center
-            form(role="form" data-toggle="validator" onsubmit="return false;")
+            form(role="form" data-toggle="validator" onsubmit="return false;").scrollFadeIn
               .form-group
                 .input-group.input-group-lg
                   span.input-group-addon @
@@ -65,12 +65,12 @@ block content
       .container
         .row
           .col-sm-12
-            h1 What’s in my PDF?
+            h1.scrollFadeIn What’s in my PDF?
         .row#advantages
           .col-sm-5
-            img(src="img/pdf.svg" alt="pdf").img-responsive
+            img(src="img/pdf.svg" alt="pdf").img-responsive.scrollFadeIn
           .col-sm-7
-            ul
+            ul.scrollFadeIn
               li.icon-doc In A4 format with 8 TinderMe cards
               li.icon-lines Every card has a unique pickup line!
               li.icon-profile Your primary Tinder profile picture
@@ -80,16 +80,19 @@ block content
       .container
         .row
           .col-sm-12
-            h1 What’s my Tinder username?
+            h1.scrollFadeIn What’s my Tinder username?
         .row#steps
           .col-sm-6
-            ol
+            ol.scrollFadeIn
               li.icon-n1 Go to settings in Tinder
               li.icon-n2 “Discovery Settings”
               li.icon-n3 Tap “Username” and claim yours
           .col-sm-6
-            img(src="img/tutorial.gif" alt="tutorial").img-responsive
+            img(src="img/tutorial.gif" alt="tutorial").img-responsive.scrollFadeIn
 
   footer
     .container
-        p.text-footer #{websiteTitle} | Last update on #{timeStamp}
+        p.text-footer By 
+          a(href="http://driesdepoorter.be/" target="_blank") Dries Depoorter
+          |  & 
+          a(href="https://github.com/wardoost" target="_blank") Ward Oosterlijnck
