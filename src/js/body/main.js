@@ -139,10 +139,11 @@ var generatePDF = function(url, username, name, imgData, work){
 
       //add userdata
       doc.setFontSize(14);
-      doc.text(x+23, y+24, name || username);
+      doc.text(x+23, y+25, name || username);
       //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(8);
-      doc.text(x+23, y+28, work || '') ;
+      doc.text(x+23, y+29, work || '') ;
+      doc.setFontSize(7);
       doc.text(x+25, y+54, url.replace('http://', ''));
       }
   }
