@@ -83,7 +83,7 @@ var getUserData = function(tinderUsername){
 
   // Get info from tinder web profile page
   $.ajax({
-    url: 'php/scraping_tinder.php?url=' + webProfileURL,
+    url: 'http://www.driesdepoorter.be/tindermecards/php/scraping_tinder.php?url=' + webProfileURL,
     type: 'get',
     dataType: 'html',
     async: false,
