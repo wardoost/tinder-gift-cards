@@ -231,7 +231,7 @@ var scrollHandler = function(){
   }
 
   // Toggle background color
-  if($(window).scrollTop() > $(document).height() / 2){
+  if($(window).scrollTop() > $('header').height() / 5){
     $('body').addClass('bg');
   }else{
     $('body.bg').removeClass('bg');

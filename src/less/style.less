@@ -54,6 +54,7 @@ section#main{
     padding: 5px;
     text-align: center;
     .transition(all 0.6s ease);
+    background: transparent;
     #logo{
       display: inline-block;
       max-width: 400px;
@@ -69,13 +70,34 @@ section#main{
         font-size: @font-size-h3;
         list-style: none;
         .transition(font-size 0.6s ease);
-        a:hover, a:active{
-          color: @white;
-          text-decoration: none;
-        }
-        a:focus{
-          color: @brand-primary;
-          text-decoration: none;
+        a{
+          span.text{
+            font-size: @font-size-h5;
+            position: relative;
+            top: -7px;
+            left: 15px;
+            opacity: 0;
+            color: @black;
+            .transition(all 0.3s ease);
+          }
+          span.icon{
+            font-size: @font-size-h3;
+          }
+          &:hover, &:active{
+            color: @white;
+            text-decoration: none;
+            span.text{
+              left: 0;
+              opacity: 1;
+            }
+            span.icon{
+              font-size: @font-size-h3;
+            }
+          }
+          &:focus{
+            color: @brand-primary;
+            text-decoration: none;
+          }
         }
       }
     }
