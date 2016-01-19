@@ -1,9 +1,9 @@
 module.exports = function(grunt, options){
   return {
     options: {
-      compress: false,
-      beautify: true,
-      mangle: false
+      // compress: false,
+      // beautify: true,
+      // mangle: false
     },
     head: {
       src: [

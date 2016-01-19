@@ -18,9 +18,17 @@ block content
       .container.text-center: h5 JavaScript is disabled which may cause this site to not work properly. Please enable JavaScript in your web browser.
 
   section#main
+    #nav
+      a(href="#page-top" title="Back to top")
+        img(src="img/logo.svg" alt="TinderMe Cards")#logo.img-responsive
+      ul#social
+        li: a(href="http://www.facebook.com" target="_blank" title="Share on Facebook")
+          span.icon.icon-facebook
+        li: a(href="https://www.twitter.com" target="_blank" title="Tweet")
+          span.icon.icon-twitter
+
     a(href="#steps")
       header(class="parallax-window" data-parallax="scroll" data-image-src="img/header.jpg")
-        img(src="img/logo.svg" alt="TinderMe Cards")#logo.img-responsive
         img(src="img/cards.png" alt="Cards")#cards.img-responsive
 
     section#steps
@@ -67,9 +75,9 @@ block content
           .col-sm-12
             h1.scrollFadeIn What’s in my PDF?
         .row#advantages
-          .col-sm-5
+          .col-sm-5.col-img
             img(src="img/pdf.svg" alt="pdf").img-responsive.scrollFadeIn
-          .col-sm-7
+          .col-sm-7.col-text
             ul.scrollFadeIn
               li.icon-doc In A4 format with 8 TinderMe cards
               li.icon-lines Your name and jobtitle 
@@ -82,17 +90,21 @@ block content
           .col-sm-12
             h1.scrollFadeIn What’s my Tinder username?
         .row#steps
-          .col-sm-6
+          .col-sm-6.col-lg-8.col-text
             ol.scrollFadeIn
               li.icon-n1 Go to settings in Tinder
               li.icon-n2 “Discovery Settings”
               li.icon-n3 Tap “Username” and claim yours
-          .col-sm-6
+          .col-sm-6.col-lg-4.col-img
             img(src="img/tutorial.gif" alt="tutorial").img-responsive.scrollFadeIn
 
   footer
-    .container
-        p.text-footer By 
-          a(href="http://driesdepoorter.be/" target="_blank") Dries Depoorter
-          |  & 
-          a(href="https://github.com/wardoost" target="_blank") Ward Oosterlijnck
+    .container-fluid
+      p.text-footer.text-center By 
+        a(href="http://driesdepoorter.be/" target="_blank") Dries Depoorter
+        |  & 
+        a(href="https://twitter.com/wardoost" target="_blank") Ward Oosterlijnck
+      p.text-footer.text-right
+        a(href="https://github.com/wardoost/tinder-me-cards/issues/new" target="_blank" title="Report a bug")
+          span.icon.icon-bug
+                

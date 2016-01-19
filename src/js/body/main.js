@@ -196,6 +196,7 @@ var resizeHandler = function(){
 }
 
 var scrollHandler = function(){
+  // Fade in on scoll
   $('.scrollFadeIn').each( function(i){
 
       var bottomOfObject = $(this).offset().top + $(this).outerHeight();
@@ -211,9 +212,9 @@ var scrollHandler = function(){
           $(this).addClass('visible');
         }
       }
-      
   });
 
+  // Position cards
   var percDown = $(window).scrollTop() / $('header').outerHeight();
   if($(window).width() >= 768){
     var newBottom = 15 + percDown * 0.4 * 100;
@@ -221,6 +222,20 @@ var scrollHandler = function(){
     var newBottom = 60 + percDown * 0.1 * 100;
   }
   $('header #cards').css('transform', 'translateY(' + newBottom + '%)');
+
+  // Navbar state toggle
+  if($(window).scrollTop() > $('header').outerHeight() - $('#nav').outerHeight()){
+    $('#nav').addClass('scrolling');
+  } else {
+    $('#nav.scrolling').removeClass('scrolling');
+  }
+
+  // Toggle background color
+  if($(window).scrollTop() > $(document).height() / 2){
+    $('body').addClass('bg');
+  }else{
+    $('body.bg').removeClass('bg');
+  }
 }
 
 

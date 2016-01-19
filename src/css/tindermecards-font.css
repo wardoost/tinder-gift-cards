@@ -74,6 +74,12 @@
 .icon-n1:before {
   content: "\6c";
 }
-.icon-down:before {
+.icon-bug:before {
   content: "\6d";
+}
+.icon-facebook:before {
+  content: "\6e";
+}
+.icon-twitter:before {
+  content: "\6f";
 }
