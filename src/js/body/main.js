@@ -92,7 +92,7 @@ var getUserData = function(tinderUsername){
       var result = jQuery.parseJSON(data);
 
       if(result.name){
-        var name = result.name;  
+        var name = removeSpecialChars(result.name);
       }
       if(result.age){
         var age = result.age.replace(/&nbsp;/g, '');
@@ -102,7 +102,7 @@ var getUserData = function(tinderUsername){
       }
 
       if(result.work){
-        var work = result.work;
+        var work = removeSpecialChars(result.work);
       }
 
       // Generate PDF with user info
@@ -139,10 +139,10 @@ var generatePDF = function(url, username, name, imgData, work){
 
       //add userdata
       doc.setFontSize(14);
-      doc.text(x+23, y+25, removeSpecialChars(name) || removeSpecialChars(username));
+      doc.text(x+23, y+25, name || username);
       //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(8);
-      doc.text(x+23, y+29, removeSpecialChars(work) || '') ;
+      doc.text(x+23, y+29, work || '') ;
       doc.setFontSize(6);
       doc.text(x+25, y+54.5, url.replace('http://', ''));
       }

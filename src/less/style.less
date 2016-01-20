@@ -21,10 +21,11 @@ body{
 //  NOTIFICATION SECTION
 // ---------------------------------------------
 section#notifications{
-  position: fixed;
-  top: @navbar-height;
+  position: absolute;
+  top: 0;
   right: 0;
   left: 0;
+  z-index: 500;
   .notification{
     color: @white;
     a{
@@ -32,10 +33,10 @@ section#notifications{
       font-weight: bold;
     }
     &.warning{
-      background-color: @brand-warning;
+      background-color: fade(@brand-warning, 75%);
     }
     &.danger{
-      background-color: @brand-danger;
+      background-color: fade(@brand-danger, 75%);
     }
   }
 }
@@ -179,7 +180,7 @@ section#main{
     @media @md{
       padding: 75px 0;
     }
-    
+
     &.dark{
       background-color: @gray-lighter;
     }
