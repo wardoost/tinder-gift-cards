@@ -67,6 +67,7 @@ var init = function(){
   $('#generateBtn').click(function(e) {
     e.preventDefault();
     getUserData($('#inputTinderUsername').val());
+    ga('send', 'event', 'form', 'generate', 'TinderMe Cards');
   });
 
   // Resize header section
@@ -141,7 +142,6 @@ var generatePDF = function(url, username, name, imgData, work){
       doc.text(x+23, y+25, removeSpecialChars(name) || removeSpecialChars(username));
       //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(8);
-      doc.setTextColor(100,101,104);
       doc.text(x+23, y+29, removeSpecialChars(work) || '') ;
       doc.setFontSize(6);
       doc.text(x+25, y+54.5, url.replace('http://', ''));
