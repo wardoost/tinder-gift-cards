@@ -173,9 +173,13 @@ section#main{
   }
 
   section{
-    padding: 40px 0;
+    padding: 50px 0;
     .transition(opacity 1s);
     background-color: @white;
+    @media @md{
+      padding: 75px 0;
+    }
+    
     &.dark{
       background-color: @gray-lighter;
     }
@@ -300,8 +304,10 @@ section#main{
         }
       }
     }
+
     &#tutorial{
       font-size: @font-size-large;
+      border-bottom: 8px solid @gray-lighter;
 
       h1{
         text-align: center;
