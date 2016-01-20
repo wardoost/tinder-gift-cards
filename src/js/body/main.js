@@ -125,7 +125,6 @@ var generatePDF = function(url, username, name, imgData, work){
   // Setup Font
   //doc.addFont('ProximaNovaSoft-Bold', 'Proxima Nova Soft Bold', 'Bold'); // library can not embed fonts :(
   doc.addFont('Verdana-Bold','Verdana Bold','Regular');
-  console.log(doc.getFontList());
   doc.setFont('Verdana Bold');
   doc.setFontStyle('Regular');
   doc.setTextColor(52,51,63);
@@ -139,22 +138,22 @@ var generatePDF = function(url, username, name, imgData, work){
 
       //add userdata
       doc.setFontSize(14);
-      doc.text(x+23, y+25, name || username);
+      doc.text(x+23, y+25, removeSpecialChars(name) || removeSpecialChars(username));
       //doc.text(x+23, y+35, lines[Math.floor(Math.random() * lines.length)]);
       doc.setFontSize(8);
-      doc.text(x+23, y+29, work || '') ;
-      doc.setFontSize(7);
-      doc.text(x+25, y+54, url.replace('http://', ''));
+      doc.setTextColor(100,101,104);
+      doc.text(x+23, y+29, removeSpecialChars(work) || '') ;
+      doc.setFontSize(6);
+      doc.text(x+25, y+54.5, url.replace('http://', ''));
       }
   }
 
   // Add logo and website
-  doc.addImage(logo,'JPEG', 153, 282, 50.326, 9.532); 
+  doc.addImage(logo,'JPEG', 153, 282, 50, 11); 
   doc.text(20, 290, 'www.tinderme.cards');
 
   // Download/open PDF depending on browser settings 
   doc.save('TinderMe-Card-' + username + '.pdf');
-
 }
 
 var imgDataURL = function(url, callback){
@@ -238,6 +237,19 @@ var scrollHandler = function(){
   }else{
     $('body.bg').removeClass('bg');
   }
+}
+
+var removeSpecialChars = function(str) {
+  // remove accents, swap ñ for n, etc
+  var from = "àáäâèéëêìíïîòóöôùúüûñç";
+  var to   = "aaaaeeeeiiiioooouuuunc";
+  for (var i=0, l=from.length ; i<l ; i++) {
+      str = str.replace(
+                new RegExp(from.charAt(i), 'g'),
+                to.charAt(i)
+            );
+  }
+  return str;
 }
 
 

@@ -25,7 +25,7 @@ block content
         li: a(href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=#{deployUrl}', 'facebook_share', 'height=480, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');" target="_blank" title="Share on Facebook")
           span.text Share
           span.icon.icon-facebook
-        li: a(href="javascript: void(0);" onclick="window.open('https://twitter.com/intent/tweet?text=Cards to hand out your Tinder profile #{deployUrl} #tindermecards', 'twitter', 'height=250, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');" target="_blank" title="Tweet" data-size="large")
+        li: a(href="javascript: void(0);" onclick="window.open('https://twitter.com/intent/tweet?text=Cards%20to%20hand%20out%20your%20Tinder%20profile%20#{deployUrl}%20%23tindermecards%20%23tinder', 'twitter', 'height=250, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');" target="_blank" title="Tweet" data-size="large")
           span.text Tweet
           span.icon.icon-twitter
 
@@ -41,7 +41,7 @@ block content
               i.icon.icon-card
               .content
                 h3 Generate
-                p The only thing the card generator needs is your Tinder username. So no password needed. 
+                p The only thing the card generator needs is your Tinder username. So no password required. 
           .col-sm-4
             .box.scrollFadeIn#print
               i.icon.icon-print
@@ -63,7 +63,7 @@ block content
               .form-group
                 .input-group.input-group-lg
                   span.input-group-addon @
-                  input#inputTinderUsername.form-control(type='text', placeholder='Tinder username' required)
+                  input#inputTinderUsername.form-control(type='text', placeholder='Tinder username', autocomplete="off", required)
                   .input-group-btn
                     a(href="#tutorial").btn.btn-info
                       span.icon.icon-question
