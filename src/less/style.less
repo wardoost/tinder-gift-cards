@@ -68,6 +68,10 @@ section#main{
       .transition(all 0.6s ease);
       li{
         list-style: none;
+        &:first-child{
+          position: relative;
+          left: 2px;
+        }
         a{
           span.text{
             font-size: @font-size-h5;
@@ -99,14 +103,17 @@ section#main{
     }
     &.scrolling{
       padding: 5px;
-      background-color: fade(@white, 70%);
+      //background-color: fade(@white, 70%);
       #logo{
-        max-width: 130px;
+        max-width: 200px;
       }
       #social{
         top: 5px;
         right: 5px;
         li{
+          &:first-child{
+            left: 1px;
+          }
           a{
             span.text{
               top: -3px;
@@ -227,7 +234,7 @@ section#main{
 
     &#pdf{
       font-size: @font-size-large;
-      border-bottom: 8px solid #cccccc;
+      border-bottom: 8px solid @gray-lighter;
 
       h1{
         text-align: center;
@@ -374,7 +381,7 @@ footer{
       }
       &.text-right{
         position: absolute;
-        top: 2px;
+        top: 3px;
         right: 7px;
       }
     }

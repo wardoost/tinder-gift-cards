@@ -214,7 +214,7 @@ var scrollHandler = function(){
       }
   });
 
-  // Position cards
+  // Position cards and logo
   var percDown = $(window).scrollTop() / $('header').outerHeight();
   if($(window).width() >= 768){
     var newBottom = 15 + percDown * 0.4 * 100;
@@ -226,8 +226,10 @@ var scrollHandler = function(){
   // Navbar state toggle
   if($(window).scrollTop() > $('header').outerHeight() - $('#nav').outerHeight()){
     $('#nav').addClass('scrolling');
+    $('#nav #logo').attr('src', 'img/logo-small.svg');
   } else {
     $('#nav.scrolling').removeClass('scrolling');
+    $('#nav #logo').attr('src', 'img/logo.svg');
   }
 
   // Toggle background color
